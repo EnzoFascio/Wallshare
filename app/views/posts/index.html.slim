@@ -1,0 +1,18 @@
+- if @posts.any?
+  table
+    thead
+      tr
+        th Título
+        th Conteúdo
+        th Ações
+    tbody
+      - @posts.each do |post|
+        tr
+          td = post.title
+          td = post.content
+          td
+            = link_to 'Mostrar', post
+            = link_to 'Editar', edit_post_path(post)
+            = link_to 'Excluir', post, method: :delete, data: { confirm: 'Tem certeza?' }
+- else
+  p 🚫 Nenhum post encontrado. Crie o primeiro!

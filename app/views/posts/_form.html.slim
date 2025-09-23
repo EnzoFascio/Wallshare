@@ -1,0 +1,18 @@
+<%= form_with(model: post, local: true, class: "space-y-6") do |f| %>
+  <div>
+    <%= f.label :title, "Título", class: "block font-medium text-gray-700" %>
+    <%= f.text_field :title, class: "w-full border rounded-lg p-2 mt-1" %>
+  </div>
+
+  <div>
+    <%= f.label :content, "Descrição", class: "block font-medium text-gray-700" %>
+    <%= f.text_area :content, rows: 4, class: "w-full border rounded-lg p-2 mt-1" %>
+  </div>
+
+  <div>
+    <%= f.label :image_url, "URL da Imagem", class: "block font-medium text-gray-700" %>
+    <%= f.text_field :image_url, class: "w-full border rounded-lg p-2 mt-1" %>
+  </div>
+
+  <%= f.submit class: "bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg" %>
+<% end %>

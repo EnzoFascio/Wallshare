@@ -1,0 +1,74 @@
+/*
+ *= require_tree .
+ *= require_self
+*/
+@import "custom";
+@import "bootstrap";
+
+// Reset básico + fontes clean
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(to bottom, #f5faff, #e6eef7);
+  color: #222;
+}
+
+// Navbar estilo glossy
+.navbar-dark {
+  background: linear-gradient(to bottom, #c8d8ef, #a7bddb);
+  border-bottom: 1px solid #90a4c2;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #2a2a2a !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.7);
+}
+
+.nav-link {
+  color: #2a2a2a !important;
+  padding: 8px 15px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+// Containers estilo “cartão Wii”
+.container, .card {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  backdrop-filter: blur(6px);
+}
+
+// Títulos
+h1, h2, h3 {
+  font-weight: 500;
+  color: #1a1a1a;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+}
+
+// Botões “aero”
+.btn {
+  background: linear-gradient(to bottom, #f5faff, #d0d9f0);
+  border: 1px solid #9db0d8;
+  color: #222;
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background: linear-gradient(to bottom, #ffffff, #c6d4f0);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}

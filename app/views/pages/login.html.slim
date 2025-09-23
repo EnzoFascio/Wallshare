@@ -1,0 +1,21 @@
+.container.d-flex.justify-content-center.align-items-center.min-vh-100
+  .card.shadow-lg.rounded-4.p-5(style="max-width: 420px; width: 100%;")
+    .text-center.mb-4
+      h2.text-primary.fw-bold.fs-2 🔑 Entrar
+      p.text-muted.fs-6 Faça login para continuar no Wallshare Project
+
+    = form_with url: "#", method: :post, local: true do |f|
+      .mb-3
+        = f.label :email, "Email", class: "form-label fw-semibold"
+        = f.email_field :email, class: "form-control rounded-pill shadow-sm", placeholder: "Digite seu email"
+
+      .mb-3
+        = f.label :password, "Senha", class: "form-label fw-semibold"
+        = f.password_field :password, class: "form-control rounded-pill shadow-sm", placeholder: "Digite sua senha"
+
+      .d-grid.mt-4
+        = f.submit "Entrar", class: "btn btn-primary rounded-pill shadow-sm fw-bold"
+
+    .text-center.mt-3
+      p.mb-0 Não tem conta?
+      = link_to "Registrar", "/register", class: "text-decoration-none text-primary fw-semibold"
