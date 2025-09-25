@@ -15,4 +15,13 @@
             = link_to 'Editar', edit_post_path(post)
             = link_to 'Excluir', post, method: :delete, data: { confirm: 'Tem certeza?' }
 - else
-  p 🚫 Nenhum post encontrado. Crie o primeiro!
+  p Nenhum post encontrado. Crie o primeiro!
+
+.container.mt-4
+  .row.g-3
+    - @posts.each do |post|
+      .col-md-4
+        .card.p-3.shadow-sm
+          - if post.image.present?
+            = image_tag post.image.url, class: "card-img-top rounded"
+          h5.mt-2.fw-bold = post.title

@@ -1,39 +1,51 @@
-.container-fluid.py-5.bg-gradient style="background: linear-gradient(135deg, #dbeafe, #f0f9ff);"
-  .text-center.mb-5
-    h1.fw-bold.display-4.text-primary.mb-3 🌐 Wallshare Project
-    p.text-muted.fs-5 Compartilhe, baixe e organize seus wallpapers favoritos
-    = link_to "+ Upload Wallpaper", new_post_path, class: "btn btn-lg btn-primary rounded-pill shadow px-5"
-
+.container.mt-4
   .row
-    / Sidebar Filtros
-    aside.col-md-3.mb-4
-      .card.shadow-sm.rounded-4.border-0
-        .card-body
-          h5.fw-bold.mb-3 📂 Categorias
-          ul.list-unstyled
-            li
-              a.text-decoration-none.text-dark href="#" 📱 Celular
-            li
-              a.text-decoration-none.text-dark href="#" 💻 Desktop
-          hr
-          h5.fw-bold.mb-3 🔎 Ordenar por
-          ul.list-unstyled
-            li
-              a.text-decoration-none.text-dark href="#" 🕒 Mais recentes
-            li
-              a.text-decoration-none.text-dark href="#" ⬇️ Mais baixados
-            li
-              a.text-decoration-none.text-dark href="#" ❤️ Mais curtidos
+    / Coluna principal
+    .col-md-9
+      .d-flex.justify-content-between.align-items-center.mb-4
+        h2.text-primary 🐬 WallShare
+        = link_to "+ Upload Wallpaper", new_post_path, class: "btn btn-primary shadow-sm px-4"
 
-    / Grade de Wallpapers estilo Pinterest
-    section.col-md-9
-      .row.row-cols-1.row-cols-sm-2.row-cols-md-3.g-4
+      / Grid estilo Pinterest
+      .row.g-4
         - @posts.each do |post|
-          .col
-            .card.border-0.shadow-sm.rounded-4.overflow-hidden.h-100
-              = image_tag(post.image_url.presence || "https://via.placeholder.com/400x300?text=Wallpaper", class: "card-img-top object-fit-cover", style: "height: 200px;")
-              .card-body.d-flex.flex-column
-                h6.fw-bold.mb-2 = post.title
-                .mt-auto.d-flex.justify-content-between
-                  = link_to "⬇️ Baixar", "#", class: "btn btn-sm btn-outline-primary rounded-pill"
-                  = link_to "❤️ Curtir", "#", class: "btn btn-sm btn-outline-danger rounded-pill"
+          .col-md-4
+            .card.shadow-sm.rounded-4.overflow-hidden.wall-card
+              = image_tag(post.image_url.presence || "https://via.placeholder.com/400x250?text=Wallpaper", class: "w-100 h-100 object-fit-cover")
+
+              .p-3
+                h5.fw-bold.mb-2 = post.title
+                p.text-muted.small = truncate(post.content, length: 60)
+
+                .d-flex.justify-content-between.align-items-center.mt-2
+                  = link_to "Ver", post_path(post), class: "btn btn-sm btn-outline-primary"
+
+                  = button_tag type: "button", class: "btn btn-sm btn-light" do
+                    i.bi.bi-heart-fill.text-primary.me-1
+                    | Curtir
+
+                  = button_to "🗑 Excluir", post_path(post),
+                      method: :delete,
+                      form: { class: "d-inline" },
+                      class: "btn btn-sm btn-danger",
+                      onclick: "return confirm('Tem certeza que deseja excluir este wallpaper?');"
+
+    / Coluna lateral (filtro)
+    .col-md-3
+      .card.p-3.shadow-sm.rounded-4
+        h5.text-primary.mb-3 🔎 Filtros
+
+        .mb-3
+          label.form-label Tipo de Wallpaper
+          select.form-select
+            option value="" Todos
+            option value="desktop" Desktop
+            option value="mobile" Celular
+
+        .mb-3
+          label.form-label Ordenar por
+          select.form-select
+            option value="recent" Mais recentes
+            option value="popular" Mais curtidos
+
+        button.btn.btn-outline-primary.w-100.mt-2 Aplicar

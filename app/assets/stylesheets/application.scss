@@ -5,16 +5,27 @@
 @import "custom";
 @import "bootstrap";
 
+// =========================
 // Reset básico + fontes clean
+// =========================
 body {
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue", Arial, sans-serif;
+
+  // Gradiente de fundo Wii
   background: linear-gradient(to bottom, #f5faff, #e6eef7);
+
+  // Cor principal do texto
   color: #222;
+
+  // Cursor Aero
+  cursor: url('/assets/cursors/aero_cursor.png') 4 4, auto;
 }
 
+// =========================
 // Navbar estilo glossy
+// =========================
 .navbar-dark {
   background: linear-gradient(to bottom, #c8d8ef, #a7bddb);
   border-bottom: 1px solid #90a4c2;
@@ -40,8 +51,11 @@ body {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+// =========================
 // Containers estilo “cartão Wii”
-.container, .card {
+// =========================
+.container,
+.card {
   background: rgba(255, 255, 255, 0.85);
   border-radius: 20px;
   padding: 20px;
@@ -50,14 +64,18 @@ body {
   backdrop-filter: blur(6px);
 }
 
+// =========================
 // Títulos
+// =========================
 h1, h2, h3 {
   font-weight: 500;
   color: #1a1a1a;
   text-shadow: 0 1px 1px rgba(255,255,255,0.8);
 }
 
+// =========================
 // Botões “aero”
+// =========================
 .btn {
   background: linear-gradient(to bottom, #f5faff, #d0d9f0);
   border: 1px solid #9db0d8;
@@ -71,4 +89,53 @@ h1, h2, h3 {
 .btn:hover {
   background: linear-gradient(to bottom, #ffffff, #c6d4f0);
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+// =========================
+// Inputs e formulários estilo Wii
+// =========================
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px 14px;
+  margin: 8px 0;
+  border: 1px solid #9db0d8;
+  border-radius: 12px;
+  background: linear-gradient(to bottom, #ffffff, #eef3fb);
+  font-size: 1rem;
+  color: #222;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #00aaff;
+  box-shadow: 0 0 6px #00aaff, inset 0 1px 3px rgba(0,0,0,0.1);
+  background: linear-gradient(to bottom, #f9fcff, #dde9f7);
+}
+
+// Labels
+label {
+  font-weight: 500;
+  color: #2a2a2a;
+  display: block;
+  margin-bottom: 6px;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+}
+
+// =========================
+// Links e cursores interativos
+// =========================
+a,
+button {
+  cursor: url('/assets/cursors/aero_pointer.png') 4 4, pointer;
+}
+
+a:hover,
+button:hover {
+  filter: drop-shadow(0 0 6px #00aaff);
 }

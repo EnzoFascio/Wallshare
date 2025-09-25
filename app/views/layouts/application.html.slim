@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Wallshare
+    title WallShare
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
@@ -11,20 +11,20 @@ html
     / Navbar estilo Wii/macOS
     nav.navbar.navbar-expand-lg.bg-white.shadow-sm.rounded-bottom-4.mb-4
       .container
-        = link_to "🌐 WallShare", root_path, class: "navbar-brand fw-bold text-primary fs-4"
+        = link_to "🐬 WallShare", root_path, class: "navbar-brand fw-bold text-primary fs-4"
 
         button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           span.navbar-toggler-icon
 
         .collapse.navbar-collapse#navbarNav
           ul.navbar-nav.me-auto
+            li.nav-item = link_to "Home", root_path, class: "nav-link"
             li.nav-item = link_to "Posts", posts_path, class: "nav-link"
-            li.nav-item = link_to "Users", "#", class: "nav-link"
 
           / Botões de Login e Registro (estáticos por enquanto)
           .d-flex.gap-2
-           = link_to "Entrar", login_path, class: "btn btn-sm btn-outline-primary rounded-pill px-3"
-           = link_to "Registrar", register_path, class: "btn btn-sm btn-primary rounded-pill px-3 text-white shadow-sm"
+            = link_to "Entrar", login_path, class: "btn btn-sm btn-outline-primary rounded-pill px-3"
+            = link_to "Registrar", register_path, class: "btn btn-sm btn-primary rounded-pill px-3 text-white shadow-sm"
 
     .container.mt-4
       = yield

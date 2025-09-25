@@ -1,18 +1,19 @@
-<%= form_with(model: post, local: true, class: "space-y-6") do |f| %>
-  <div>
-    <%= f.label :title, "Título", class: "block font-medium text-gray-700" %>
-    <%= f.text_field :title, class: "w-full border rounded-lg p-2 mt-1" %>
-  </div>
+= form_with(model: @post, local: true, html: { multipart: true }) do |f|
+  .mb-3
+    = f.label :title, "Nome do Wallpaper"
+    = f.text_field :title, class: "form-control"
 
-  <div>
-    <%= f.label :content, "Descrição", class: "block font-medium text-gray-700" %>
-    <%= f.text_area :content, rows: 4, class: "w-full border rounded-lg p-2 mt-1" %>
-  </div>
+  .mb-3
+    = f.label :image, "Upload do Wallpaper"
+    = f.file_field :image, class: "form-control"
 
-  <div>
-    <%= f.label :image_url, "URL da Imagem", class: "block font-medium text-gray-700" %>
-    <%= f.text_field :image_url, class: "w-full border rounded-lg p-2 mt-1" %>
-  </div>
+  = f.submit "Salvar", class: "btn btn-primary"
 
-  <%= f.submit class: "bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg" %>
-<% end %>
+.field.mb-4
+  - if @post.image.present?
+    p.text-gray-700.mb-2 Imagem atual:
+    = image_tag @post.image.url, class: "w-48 rounded mb-2"
+
+    .flex.items-center.gap-2
+      = f.check_box :remove_image
+      = f.label :remove_image, "Remover imagem"

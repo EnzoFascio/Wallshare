@@ -1,29 +1,31 @@
-.container.d-flex.justify-content-center.align-items-center.min-vh-100
-  .card.shadow-lg.rounded-4.p-5(style="max-width: 460px; width: 100%;")
-    .text-center.mb-4
-      h2.text-primary.fw-bold.fs-2 📝 Criar Conta
-      p.text-muted.fs-6 Registre-se e compartilhe seus wallpapers favoritos
+.container.mt-5.p-4
+  .row.justify-content-center
+    .col-md-6
+      .card.p-4
+        h2.text-center.mb-4 📝 Criar Conta no WallShare
 
-    = form_with url: "#", method: :post, local: true do |f|
-      .mb-3
-        = f.label :name, "Nome", class: "form-label fw-semibold"
-        = f.text_field :name, class: "form-control rounded-pill shadow-sm", placeholder: "Digite seu nome"
+        = form_with url: "#", method: :post, local: true do |f|
+          .mb-3
+            = f.label :name, "Nome"
+            = f.text_field :name, class: "form-control", placeholder: "Digite seu nome completo"
 
-      .mb-3
-        = f.label :email, "Email", class: "form-label fw-semibold"
-        = f.email_field :email, class: "form-control rounded-pill shadow-sm", placeholder: "Digite seu email"
+          .mb-3
+            = f.label :email, "E-mail"
+            = f.email_field :email, class: "form-control", placeholder: "Digite seu e-mail"
 
-      .mb-3
-        = f.label :password, "Senha", class: "form-label fw-semibold"
-        = f.password_field :password, class: "form-control rounded-pill shadow-sm", placeholder: "Crie uma senha"
+          .mb-3
+            = f.label :password, "Senha"
+            = f.password_field :password, class: "form-control", placeholder: "Crie uma senha"
 
-      .mb-3
-        = f.label :password_confirmation, "Confirmar Senha", class: "form-label fw-semibold"
-        = f.password_field :password_confirmation, class: "form-control rounded-pill shadow-sm", placeholder: "Repita a senha"
+          .mb-3
+            = f.label :password_confirmation, "Confirmar Senha"
+            = f.password_field :password_confirmation, class: "form-control", placeholder: "Confirme sua senha"
 
-      .d-grid.mt-4
-        = f.submit "Registrar", class: "btn btn-success rounded-pill shadow-sm fw-bold"
+          .d-flex.justify-content-center.mt-4
+            = f.submit "Registrar", class: "btn btn-primary px-5"
 
-    .text-center.mt-3
-      p.mb-0 Já tem conta?
-      = link_to "Entrar", "/login", class: "text-decoration-none text-primary fw-semibold"
+        hr.my-4
+
+        p.text-center.mb-0 Já tem conta?
+        .text-center
+          = link_to "Entrar", login_path, class: "btn btn-outline-primary mt-2 px-4"

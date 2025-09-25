@@ -42,6 +42,12 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :image_url)
+    params.require(:post).permit(:title, :content, :image) 
+    # ⚠️ use :image (não :image_url) se estiver usando CarrierWave
   end
+
+  def post_params
+  params.require(:post).permit(:title, :content, :image, :remove_image)
+  end
+
 end
