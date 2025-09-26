@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   root "home#index"
 
   # Páginas estáticas
-  get "/login", to: "pages#login"
-  get "/register", to: "pages#register"
+  #get "/login", to: redirect("/users/sign_in")
+  #get "/register", to: redirect("/users/register")
+
+  devise_for :users
 end

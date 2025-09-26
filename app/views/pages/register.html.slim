@@ -4,7 +4,7 @@
       .card.p-4
         h2.text-center.mb-4 📝 Criar Conta no WallShare
 
-        = form_with url: "#", method: :post, local: true do |f|
+        = form_with url: user_registration_path, scope: :user, local: true do |f|
           .mb-3
             = f.label :name, "Nome"
             = f.text_field :name, class: "form-control", placeholder: "Digite seu nome completo"

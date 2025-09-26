@@ -8,7 +8,6 @@ html
     = javascript_importmap_tags
 
   body.bg-light
-    / Navbar estilo Wii/macOS
     nav.navbar.navbar-expand-lg.bg-white.shadow-sm.rounded-bottom-4.mb-4
       .container
         = link_to "🐬 WallShare", root_path, class: "navbar-brand fw-bold text-primary fs-4"
@@ -21,10 +20,16 @@ html
             li.nav-item = link_to "Home", root_path, class: "nav-link"
             li.nav-item = link_to "Posts", posts_path, class: "nav-link"
 
-          / Botões de Login e Registro (estáticos por enquanto)
           .d-flex.gap-2
-            = link_to "Entrar", login_path, class: "btn btn-sm btn-outline-primary rounded-pill px-3"
-            = link_to "Registrar", register_path, class: "btn btn-sm btn-primary rounded-pill px-3 text-white shadow-sm"
-
+            - if user_signed_in?
+              span.navbar-text.me-2
+                | Olá, #{current_user.email}
+              = link_to "Sair", destroy_user_session_path, 
+                data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja sair?" }, 
+                class: "btn btn-sm btn-outline-danger rounded-pill px-3"
+            - else
+              = link_to "Entrar", new_user_session_path, class: "btn btn-primary"
+              = link_to "Registrar", new_user_registration_path, class: "btn btn-outline-primary"
+              
     .container.mt-4
       = yield

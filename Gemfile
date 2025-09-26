@@ -40,6 +40,8 @@ gem "carrierwave", "~> 2.2"
 
 gem "carrierwave-mongoid", "~> 1.3"
 
+gem 'devise', '~> 4.2'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ], require: "debug/prelude"
