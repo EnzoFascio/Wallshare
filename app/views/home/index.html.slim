@@ -35,17 +35,15 @@
       .card.p-3.shadow-sm.rounded-4
         h5.text-primary.mb-3 🔎 Filtros
 
-        .mb-3
-          label.form-label Tipo de Wallpaper
-          select.form-select
-            option value="" Todos
-            option value="desktop" Desktop
-            option value="mobile" Celular
+        = form_with url: posts_path, method: :get, local: true do |f|
+          .mb-3
+            = f.label :tipo, "Tipo de Wallpaper", class: "form-label"
+            = f.select :tipo, [["Todos", ""], ["Desktop", "desktop"], ["Celular", "mobile"]],
+                {}, class: "form-select"
 
-        .mb-3
-          label.form-label Ordenar por
-          select.form-select
-            option value="recent" Mais recentes
-            option value="popular" Mais curtidos
+          .mb-3
+            = f.label :ordem, "Ordenar por", class: "form-label"
+            = f.select :ordem, [["Mais recentes", "recent"], ["Mais curtidos", "popular"]],
+                {}, class: "form-select"
 
-        button.btn.btn-outline-primary.w-100.mt-2 Aplicar
+          = f.submit "Aplicar", class: "btn btn-outline-primary w-100 mt-2"

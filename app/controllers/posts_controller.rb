@@ -1,6 +1,17 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
+
+    if params[:tipo].present?
+      @posts = @posts.where(tipo: params[:tipo])
+    end
+
+    case params[:ordem]
+    when "recent"
+      @posts = @posts.order(created_at: :desc)
+    when "popular"
+      @posts = @posts.order(likes_count: :desc)
+    end
   end
 
   def show
@@ -42,12 +53,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content, :image) 
-    # ⚠️ use :image (não :image_url) se estiver usando CarrierWave
+    params.require(:post).permit(:title, :content, :image, :remove_image, :tipo)
   end
-
-  def post_params
-  params.require(:post).permit(:title, :content, :image, :remove_image)
-  end
-
 end
