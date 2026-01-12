@@ -32,7 +32,7 @@ gem 'mongoid', '~> 8.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-gem "bootstrap", "~> 5.3.0"
+gem "bootstrap", "~> 5.3.8"
 
 gem "sassc-rails"
 
